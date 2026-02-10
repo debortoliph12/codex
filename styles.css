@@ -1,0 +1,187 @@
+:root {
+  --bg: #f7efe5;
+  --card: #fffaf4;
+  --ink: #3a2f27;
+  --accent: #d46f4d;
+  --muted: #7a6d62;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: radial-gradient(circle at top, #fff5ea, var(--bg));
+  color: var(--ink);
+}
+
+.app-shell {
+  max-width: 900px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 18px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-family: "Patrick Hand", cursive;
+  font-size: 2rem;
+}
+.subtitle { margin: 0; color: var(--muted); }
+
+.card {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 10px 25px rgba(108, 70, 45, 0.1);
+}
+.screen { margin-top: 12px; position: relative; overflow: hidden; }
+.hidden { display: none !important; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+h2 {
+  font-size: 1.6rem;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+}
+
+.btn {
+  background: #f2e1cd;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: scale(.98); }
+.btn.primary { background: var(--accent); color: white; }
+
+.tabs { display: flex; gap: 8px; margin: 12px 0; flex-wrap: wrap; }
+.tab { border: none; background: #f3e6d9; border-radius: 999px; padding: 8px 12px; cursor: pointer; }
+.tab.active { background: #e6b89c; }
+
+textarea, input[type="date"] {
+  width: 100%;
+  margin: 8px 0;
+  border: 1px solid #e5d7c7;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: .95rem;
+  background: #fff;
+}
+textarea { min-height: 96px; resize: vertical; }
+
+.media-grid { display: grid; grid-template-columns: repeat(2, minmax(120px, 1fr)); gap: 10px; }
+.file-label {
+  background: #f4e7d8;
+  border-radius: 12px;
+  padding: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .92rem;
+}
+.file-label input { display: none; }
+
+.entry-list { margin-top: 12px; display: grid; gap: 10px; }
+.entry-item {
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #efdfce;
+  padding: 10px;
+  animation: floatIn .3s ease;
+}
+.entry-item img, .entry-item video, .feed-item img, .feed-item video {
+  max-width: 100%;
+  border-radius: 10px;
+  display: block;
+  margin: 6px 0;
+}
+.entry-item audio, .feed-item audio { width: 100%; margin: 6px 0; }
+.muted { color: var(--muted); font-size: .9rem; }
+
+.fullscreen-feed {
+  padding: 0;
+  background: #111;
+  border-radius: 16px;
+  height: 72vh;
+}
+.feed {
+  height: 100%;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+.feed-item {
+  scroll-snap-align: start;
+  min-height: 72vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+  border-bottom: 1px solid rgba(255,255,255,.14);
+  animation: fadeUp .45s ease;
+  position: relative;
+}
+.feed-date { opacity: .8; margin-top: 8px; font-size: .9rem; }
+.feed-mascot {
+  position: absolute;
+  right: 12px;
+  bottom: 8px;
+  opacity: .35;
+  font-size: 1rem;
+}
+
+.mascot {
+  position: absolute;
+  opacity: .22;
+  font-size: 1rem;
+}
+.mascot-question { right: 12px; top: 10px; }
+.mascot-corner { right: 12px; top: 12px; }
+
+.paywall, .reveal {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 12, 8, .62);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 30;
+}
+.paywall-card, .reveal-card {
+  max-width: 460px;
+  text-align: center;
+  animation: pop .4s ease;
+}
+.reveal-card { background: linear-gradient(145deg, #fff8ef, #ffe3c7); }
+
+.mascot-strip {
+  display: flex;
+  gap: 10px;
+  opacity: .55;
+  font-size: .82rem;
+  margin: 14px 2px;
+  flex-wrap: wrap;
+}
+.status-log {
+  background: #2a211b;
+  color: #f8e5cf;
+  min-height: 80px;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes floatIn {
+  from { opacity: 0; transform: scale(.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes pop {
+  from { transform: scale(.94); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

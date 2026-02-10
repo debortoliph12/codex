@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Viva — Registros de Vida</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <h1>Viva</h1>
+        <p class="subtitle">memórias, presença e carinho em cada dia</p>
+      </header>
+
+      <main>
+        <section id="question-screen" class="screen card hidden">
+          <div class="mascot mascot-question" aria-hidden="true">☀️</div>
+          <h2>Are you alive today?</h2>
+          <p>Responda uma vez por dia e siga para seu registro.</p>
+          <div class="row">
+            <button id="answer-yes" class="btn primary">Yes, I am.</button>
+            <button id="answer-soft" class="btn">Still here.</button>
+          </div>
+        </section>
+
+        <section id="app-content" class="hidden">
+          <nav class="tabs">
+            <button class="tab active" data-tab="journal">Registro</button>
+            <button class="tab" data-tab="memories">Memórias</button>
+            <button class="tab" data-tab="capsule">Cápsula do Tempo</button>
+            <button class="tab" data-tab="backup">Backup</button>
+          </nav>
+
+          <section id="journal" class="screen card">
+            <div class="mascot mascot-corner" aria-hidden="true">💛</div>
+            <h3>Registro diário</h3>
+            <p id="journal-date" class="muted"></p>
+            <textarea id="journal-text" placeholder="O que você viveu hoje?"></textarea>
+            <div class="media-grid">
+              <label class="file-label">Foto<input id="photo-input" type="file" accept="image/*" multiple /></label>
+              <label class="file-label">Vídeo<input id="video-input" type="file" accept="video/*" multiple /></label>
+            </div>
+            <div class="audio-recorder">
+              <button id="record-audio" class="btn">Gravar áudio curto</button>
+              <span id="record-status" class="muted">até 30s</span>
+            </div>
+            <button id="save-entry" class="btn primary">Salvar registro de hoje</button>
+            <div id="entry-list" class="entry-list"></div>
+          </section>
+
+          <section id="memories" class="screen fullscreen-feed hidden">
+            <div id="memories-feed" class="feed"></div>
+          </section>
+
+          <section id="capsule" class="screen card hidden">
+            <div class="mascot mascot-corner" aria-hidden="true">🌱</div>
+            <h3>Cápsula do Tempo</h3>
+            <textarea id="capsule-text" placeholder="Uma mensagem para seu eu do futuro"></textarea>
+            <div class="media-grid">
+              <label class="file-label">Foto<input id="capsule-photo" type="file" accept="image/*" multiple /></label>
+              <label class="file-label">Vídeo<input id="capsule-video" type="file" accept="video/*" multiple /></label>
+            </div>
+            <label class="muted">Data de abertura (ou deixe vazio para aleatório)</label>
+            <input id="capsule-date" type="date" />
+            <button id="save-capsule" class="btn primary">Criar cápsula</button>
+            <div id="capsule-list" class="entry-list"></div>
+          </section>
+
+          <section id="backup" class="screen card hidden">
+            <h3>Dados e persistência</h3>
+            <p class="muted">Seus dados ficam locais, com opção de exportar/importar backup offline.</p>
+            <div class="row">
+              <button id="export-backup" class="btn">Exportar JSON</button>
+              <label class="file-label">Importar JSON<input id="import-backup" type="file" accept="application/json" /></label>
+            </div>
+            <pre id="status-log" class="status-log"></pre>
+          </section>
+        </section>
+      </main>
+
+      <section id="paywall" class="paywall hidden">
+        <div class="card paywall-card">
+          <h3>Teste grátis encerrado</h3>
+          <p>Seu período de 3 dias acabou. Continue com Viva Premium por <strong>R$ 2,99/mês</strong>, sem anúncios.</p>
+          <button id="subscribe" class="btn primary">Assinar agora</button>
+        </div>
+      </section>
+
+      <section id="capsule-reveal" class="reveal hidden" aria-live="polite">
+        <div class="card reveal-card">
+          <h3>✨ Cápsula descoberta</h3>
+          <p id="reveal-text"></p>
+          <button id="close-reveal" class="btn">Abrir app</button>
+        </div>
+      </section>
+
+      <div class="mascot-strip" aria-hidden="true">
+        <span>Lory 🐦</span><span>Groodie 🌿</span><span>Kai ⭐</span><span>Coração 💗</span><span>Sol ☀️</span>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
